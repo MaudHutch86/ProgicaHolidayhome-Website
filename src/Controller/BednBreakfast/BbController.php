@@ -11,7 +11,7 @@ class BbController extends AbstractController
 {
     private HolidayHomeRepository $repo;
 
-    public function __construct(HolidayHomeRepository $repo)
+    public function __construct (HolidayHomeRepository $repo)
     {
         $this->repo = $repo;
     }
