@@ -48,12 +48,12 @@ class HolidayHome
     private $Bedding;
 
     /**
-     * @ORM\Column(type="boolean", options="default":false )
+     * @ORM\Column(type="boolean", options= {"default":false })
      */
     private $animals;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="integer", length=255)
      */
     private $highSeasonPrice;
 
@@ -76,6 +76,12 @@ class HolidayHome
      * @ORM\Column(type="integer")
      */
     private $postCode;
+
+    public function __construct()
+    {
+$this->animals = false;
+$this->created_at = new \DateTime();
+    }
 
     public function getId(): ?int
     {
@@ -166,12 +172,12 @@ class HolidayHome
         return $this;
     }
 
-    public function getHighSeasonPrice(): ?string
+    public function getHighSeasonPrice(): ?int
     {
         return $this->highSeasonPrice;
     }
 
-    public function setHighSeasonPrice(string $highSeasonPrice): self
+    public function setHighSeasonPrice(int $highSeasonPrice): self
     {
         $this->highSeasonPrice = $highSeasonPrice;
 

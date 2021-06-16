@@ -1,0 +1,23 @@
+{% extends "base.html.twig"%}
+
+{% block title %}
+Progica gorgeous Bed and Breakfast {% endblock %}
+
+{% block body %}
+	<h1>
+		Available Bbs</h1>
+	<div class="row">
+    {% for HolidayHome in BB %}
+		<div class="col-md-4">
+			<div class="card" style="width: 18rem;">
+				<img src="..." class="card-img-top" alt="...">
+				<div class="card-body">
+					<h5 class="card-title">{{HolidayHome.name}}</h5>
+					<p class="card-text">{{HolidayHome.description}}</p>
+					<a href="#" class="btn btn-primary">Go somewhere</a>
+				</div>
+			</div>
+		</div>
+	</div>
+    {% endfor %}
+{% endblock %}
