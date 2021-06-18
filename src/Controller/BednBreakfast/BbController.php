@@ -28,10 +28,9 @@ class BbController extends AbstractController
     /**
      * @route( "/HolidayHome/{id}", name= "Bb.show")
      */
-    public function show ($id)
+    public function show ( int $id)
     {
-    
-    $BB = $this->repo->find($id);
+    $BB=$this->repo->find($id);
     return $this->render('/Bb/show.html.twig',[
         'BB' => $BB
     ]);

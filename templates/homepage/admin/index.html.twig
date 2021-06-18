@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+{% block title %}
+	Dashboard gite
+{% endblock %}
+{% block body %}
+	<h1>Administration progica</h1>
+    <a href=""class="btn btn-warning">create</a>
+	<div class="row">
+		<table class="table-striped">
+			<thead>
+				<th>#id</th>
+				<th>Name</th>
+				<th>Action</th>
+			</thead>
+			<tbody>
+				{% for BB in BBs %}
+					<tr>
+						<th></th>
+						<th></th>
+						<th>
+                        <a href=""class="btn btn-primary">Edit</a>
+                        </th>
+
+					</tr>
+				{% endfor %}
+			</tbody>
+			<table>
+            </div>
+			{% endblock %}
