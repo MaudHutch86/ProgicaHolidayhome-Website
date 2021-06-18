@@ -7,14 +7,14 @@ Progica gorgeous Bed and Breakfast {% endblock %}
 	<h1>
 		Available Bbs</h1>
 	<div class="row">
-    {% for HolidayHome in BB %}
+    {% for HolidayHome in BBs %}
 		<div class="col-md-4">
 			<div class="card" style="width: 18rem;">
 				<img src="..." class="card-img-top" alt="...">
 				<div class="card-body">
 					<h5 class="card-title">{{HolidayHome.name}}</h5>
 					<p class="card-text">{{HolidayHome.description}}</p>
-					<a href="#" class="btn btn-primary">Go somewhere</a>
+					<a href= "{{path ('Bb.show',{'id': HolidayHome.id})}}" class="btn btn-primary">Click to your bed and Breakfast</a>
 				</div>
 			</div>
 		</div>

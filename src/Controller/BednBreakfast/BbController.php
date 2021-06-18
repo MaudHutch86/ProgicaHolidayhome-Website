@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller\BednBreakfast;
-
+use App\Entity\HolidayHome;
 use App\Repository\HolidayHomeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,9 +20,20 @@ class BbController extends AbstractController
      */
     public function index(): Response
     {
-        $BB = $this->repo->findAll();
+        $BBs = $this->repo->findAll();
         return $this->render('Bb/index.html.twig', [
-            'BB' => $BB
+            'BBs' => $BBs
         ]);
+    }
+    /**
+     * @route( "/HolidayHome/{id}", name= "Bb.show")
+     */
+    public function show ($id)
+    {
+    
+    $BB = $this->repo->find($id);
+    return $this->render('/Bb/show.html.twig',[
+        'BB' => $BB
+    ]);
     }
 }
