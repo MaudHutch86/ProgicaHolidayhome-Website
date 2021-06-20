@@ -3,8 +3,13 @@
 	Dashboard gite
 {% endblock %}
 {% block body %}
-	<h1>Administration progica</h1>
-    <a href=""class="btn btn-warning">create</a>
+	<h1>Administration Dashboard</h1>
+	{% for message in app.flashes('success') %}
+		<div class ="alert alert-sucess">
+		<p>{{message}}</p>
+		</div>
+	{% endfor %}
+    <a href="{{path('admin.new')}}"class="btn btn-warning">create</a>
 	<div class="row">
 		<table class="table-striped">
 			<thead>

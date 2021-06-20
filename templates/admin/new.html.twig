@@ -1,0 +1,60 @@
+{% extends "base.html.twig"%}
+
+{% block title %}
+	New Bed and breakfast
+{% endblock %}
+{% block body %}
+	<div class="row">
+		<h1>Add a new BB</h1>
+	</div>
+	{{form_start(formBB)}}
+	<div class="row">
+		<div class="col-md-6">
+			{{form_row(formBB.name)}}
+		</div>
+		<div class="row">
+			<div class="col-md-8">
+				{{form_row(formBB.description)}}
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					{{form_row(formBB.address)}}
+				</div>
+			<div class="row">
+				<div class="col-md-3">
+					{{form_row(formBB.floorSpace)}}
+				</div>
+				<div class="col-md-3">
+					{{form_row(formBB.roomNumber)}}
+				</div>
+
+				<div class="col-md-3">
+					{{form_row(formBB.Bedding)}}
+				</div>
+
+				<div class="col-md-3">
+					{{form_row(formBB.animals)}}
+				</div>
+<div class="row">
+				<div class="col-md-6">
+					{{form_row(formBB.highSeasonPrice)}}
+				</div>
+
+				<div class="col-md-6">
+					{{form_row(formBB.lowSeasonPrice)}}
+				</div
+			</div>
+<div class="col-md-6">
+					{{form_row(formBB.city)}}
+				</div>
+
+				<div class="col-md-6">
+					{{form_row(formBB.postCode)}}
+				</div>
+			</div>
+				<div class "mt-3">
+					<input type="submit" value="create" class="btn btn-primary">
+
+				</div>
+				{{form_end(formBB)}}
+			{% endblock %}
