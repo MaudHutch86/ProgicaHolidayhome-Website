@@ -15,13 +15,30 @@
 			<thead>
 				<th>#id</th>
 				<th>Name</th>
-				<th>Action</th>
+				<th>Description</th>
+				<th>Address</th>
+				<th>FloorSpace</th>
+				<th>roomNumber</th>
+				<th>Bedding</th>
+				<th>Animals</th>
+				<th>highSeasonPrice</th>
+				<th>lowSeasonPrice</th>
+				<th>city</th>
 			</thead>
 			<tbody>
 				{% for BB in BBs %}
 					<tr>
-						<th></th>
-						<th></th>
+						<th>{{BB.id}}</th>
+						<th>{{BB.name}}</th>
+						<th>{{BB.description}}</th>
+						<th>{{BB.address}}</th>
+						<th>{{BB.floorSpace}}</th>
+						<th>{{BB.roomNumber}}</th>
+						<th>{{BB.Bedding}}</th>
+						<th>{{BB.animals}}</th>
+						<th>{{BB.highSeasonPrice}}</th>
+						<th>{{BB.lowSeasonPrice}}</th>
+						<th>{{BB.city}}</th>
 						<th>
                         <a href=""class="btn btn-primary">Edit</a>
                         </th>

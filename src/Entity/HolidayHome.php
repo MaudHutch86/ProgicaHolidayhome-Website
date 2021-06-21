@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use App\Repository\HolidayHomeRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=HolidayHomeRepository::class)
  */
@@ -19,6 +19,13 @@ class HolidayHome
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     * min=5,
+     * max=30,
+     * minMessage = "Your first name must be at least {{ limit }} characters long",
+     * maxMessage = "Your first name cannot be longer than {{ limit }} characters"
+     * )
      */
     private $name;
 
@@ -73,7 +80,11 @@ class HolidayHome
     private $city;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer")@
+     * @Assert\length(
+     * min=5,
+     * max=5
+     * )
      */
     private $postCode;
 

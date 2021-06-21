@@ -3,6 +3,7 @@
         "db",
         "inno",
         "longtext",
+        "sensio",
         "tinyint",
         "varchar"
     ]

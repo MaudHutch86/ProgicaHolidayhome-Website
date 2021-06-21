@@ -40,10 +40,11 @@ class AdminController extends AbstractController
 
     {
         $BB = new HolidayHome();
-        $form = $this->createForm(BBType::class);
+        $form = $this->createForm(BBType::class,$BB);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) 
         {
+           
             $this->em->persist($BB);
             $this->em->flush();
             $this->addFlash("success","Your file is validated");
