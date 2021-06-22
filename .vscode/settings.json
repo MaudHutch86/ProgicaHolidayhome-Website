@@ -1,10 +1,17 @@
 {
     "cSpell.words": [
         "db",
+        "encoder",
+        "hasher",
         "inno",
+        "interface",
+        "lokalise",
         "longtext",
+        "password",
+        "security",
         "sensio",
         "tinyint",
+        "user",
         "varchar"
     ]
 }

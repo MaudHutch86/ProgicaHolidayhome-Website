@@ -35,6 +35,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $password;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $phoneNumber;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -114,5 +119,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getPhoneNumber(): ?int
+    {
+        return $this->phoneNumber;
+    }
+
+    public function setPhoneNumber(?int $phoneNumber): self
+    {
+        $this->phoneNumber = $phoneNumber;
+
+        return $this;
     }
 }
