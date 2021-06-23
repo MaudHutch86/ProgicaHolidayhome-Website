@@ -2,8 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\HolidayHomeRepository;
+use App\Entity\Amenities;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\HolidayHomeRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=HolidayHomeRepository::class)
@@ -88,10 +91,16 @@ class HolidayHome
      */
     private $postCode;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Amenities::class, inversedBy="yes")
+     */
+    private $anemities;
+
     public function __construct()
     {
 $this->animals = false;
 $this->created_at = new \DateTime();
+$this->anemities = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -239,6 +248,30 @@ $this->created_at = new \DateTime();
     public function setPostCode(int $postCode): self
     {
         $this->postCode = $postCode;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Amenities[]
+     */
+    public function getAnemities(): Collection
+    {
+        return $this->anemities;
+    }
+
+    public function addAnemity(Amenities $anemity): self
+    {
+        if (!$this->anemities->contains($anemity)) {
+            $this->anemities[] = $anemity;
+        }
+
+        return $this;
+    }
+
+    public function removeAnemity(Amenities $anemity): self
+    {
+        $this->anemities->removeElement($anemity);
 
         return $this;
     }

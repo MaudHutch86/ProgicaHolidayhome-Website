@@ -19,9 +19,9 @@ class UserFixtures extends Fixture
        
         $user->setUsername ('admin');
         $user->setRoles(['ROLE_ADMIN']);
-        $user->setPassword($this->encoder->encodePassword($user,'admin'));
-        $user->setPhoneNumber(+987654321);
-        
+        $user->setPassword($this->encoder->hashPassword($user,'admin'));
+        $user->setPhoneNumber(987654321);
+        $manager->persist($user);
 
 
         
@@ -30,10 +30,10 @@ class UserFixtures extends Fixture
 
         $user2->setUsername('user');
         $user2->setRoles(['ROLE_USER']);
-        $user2->setPassword($this->encoder->encodePassword($user,'user'));
-        $user2->setPhoneNumber(+967654322);
+        $user2->setPassword($this->encoder->hashPassword($user,'user'));
+        $user2->setPhoneNumber(967654322);
     
-        $manager->persist($user,$user2);
+        $manager->persist($user2);
         $manager->flush();
     }
     
