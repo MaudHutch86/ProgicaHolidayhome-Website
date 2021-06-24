@@ -54,7 +54,7 @@ $anemity =[];
             ->setCreatedAt($faker->dateTimeThisYear('now', 'Europe/Paris')) 
             ->setCity($faker->city())
             ->setPostCode($faker->numberBetween(12000,70000))
-            ->addAnemity($faker->randomElement());
+            ->addAnemity($faker->randomElement($anemity));
             
             $manager->persist($BB);
             

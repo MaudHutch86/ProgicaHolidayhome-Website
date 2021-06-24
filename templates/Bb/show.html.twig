@@ -33,7 +33,12 @@
 					<td>{{BB.floorSpace}}</td>
 					<td>{{BB.roomNumber}}</td>
 					<td>{{BB.Bedding}}</td>
-					<td>{{BB.animals}}</td>
+					<th>Animals</th>
+					{% if BB.animals %}
+					<td>Accepted</td>
+					{% else %}
+					<td>Refused</td>
+					{% endif %}
 					<td>{{BB.highSeasonPrice}}</td>
 					<td>{{BB.lowSeasonPrice}}</td>
 					<td>{{BB.city}}</td>
@@ -41,8 +46,16 @@
 <tr>
 <th>Amenities</th>
 <td>
-{% for anemity in HolidayHome.Anemities %}
+{% for equipements in BB.Amenity %}
+<tr>
+<th>Amenities</th>
+<td>
+<ul>
+<li></li>
+</ul>
+</td>
 
+</tr>
 {% endfor %}
 </td>
 </tr>
