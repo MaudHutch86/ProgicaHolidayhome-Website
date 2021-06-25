@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+
 use App\Entity\Amenities;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\HolidayHomeRepository;
@@ -94,13 +95,13 @@ class HolidayHome
     /**
      * @ORM\ManyToMany(targetEntity=Amenities::class, inversedBy="yes")
      */
-    private $anemities;
+    private $amenities;
 
     public function __construct()
     {
 $this->animals = false;
 $this->created_at = new \DateTime();
-$this->anemities = new ArrayCollection();
+$this->amenities = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -255,23 +256,23 @@ $this->anemities = new ArrayCollection();
     /**
      * @return Collection|Amenities[]
      */
-    public function getAnemities(): Collection
+    public function getAmenities(): Collection
     {
-        return $this->anemities;
+        return $this->amenities;
     }
 
-    public function addAnemity(Amenities $anemity): self
+    public function addAmenity(Amenities $amenity): self
     {
-        if (!$this->anemities->contains($anemity)) {
-            $this->anemities[] = $anemity;
+        if (!$this->amenities->contains($amenity)) {
+            $this->amenities[] = $amenity;
         }
 
         return $this;
     }
 
-    public function removeAnemity(Amenities $anemity): self
+    public function removeAmenity(Amenities $amenity): self
     {
-        $this->anemities->removeElement($anemity);
+        $this->amenities->removeElement($amenity);
 
         return $this;
     }

@@ -15,6 +15,7 @@
         "password",
         "security",
         "sensio",
+        "symfony",
         "tinyint",
         "user",
         "varchar"

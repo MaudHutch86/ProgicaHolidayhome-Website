@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Entity;
-
-use App\Repository\AmenitiesRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Form\BBType;
+use App\Entity\HolidayHome;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\AmenitiesRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=AmenitiesRepository::class)
@@ -63,7 +64,7 @@ class Amenities
     {
         if (!$this->yes->contains($ye)) {
             $this->yes[] = $ye;
-            $ye->addAnemity($this);
+            $ye->addAmenity($this);
         }
 
         return $this;
@@ -72,7 +73,7 @@ class Amenities
     public function removeYe(HolidayHome $ye): self
     {
         if ($this->yes->removeElement($ye)) {
-            $ye->removeAnemity($this);
+            $ye->removeAmenity($this);
         }
 
         return $this;

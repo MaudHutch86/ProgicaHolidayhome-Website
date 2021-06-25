@@ -2,9 +2,12 @@
 
 namespace App\Repository;
 
+use Doctrine\ORM\Query;
+use App\Entity\BBSearch;
 use App\Entity\HolidayHome;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method HolidayHome|null find($id, $lockMode = null, $lockVersion = null)
@@ -18,23 +21,34 @@ class HolidayHomeRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, HolidayHome::class);
     }
-
-    // /**
-    //  * @return HolidayHome[] Returns an array of HolidayHome objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
+     /**
+      * @return Query
+      */
+    
+    public function findAllVisibleQuery( BBSearch $search): Query
+    {     
         return $this->createQueryBuilder('h')
-            ->andWhere('h.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('h.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
+    ->getQuery();
+    
+    
+    }
+
+/**
+ * @return HolidayHome[]
+ */
+
+     
+    public function findLatestBB():array
+    {
+        
+        return $this->findVisibleQuery()
+        
+            ->orderBy('created_at', 'DESC');
+           
+            
         ;
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?HolidayHome

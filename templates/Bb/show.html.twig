@@ -35,33 +35,33 @@
 					<td>{{BB.Bedding}}</td>
 					<th>Animals</th>
 					{% if BB.animals %}
-					<td>Accepted</td>
+						<td>Accepted</td>
 					{% else %}
-					<td>Refused</td>
+						<td>Refused</td>
 					{% endif %}
 					<td>{{BB.highSeasonPrice}}</td>
 					<td>{{BB.lowSeasonPrice}}</td>
 					<td>{{BB.city}}</td>
 					<td>{{BB.postCode}}</td>
-<tr>
-<th>Amenities</th>
-<td>
-{% for equipements in BB.Amenity %}
-<tr>
-<th>Amenities</th>
-<td>
-<ul>
-<li></li>
-</ul>
-</td>
+					<tr>
+						<th>Amenities</th>
+						<td>
+							{% for eq in BB.amenities %}
+								<tr>
+									<th>Amenities</th>
+									<td>
+										<ul>
+											<li>
+												{{eq.name}}</li>
+										</ul>
+									</td>
 
-</tr>
-{% endfor %}
-</td>
-</tr>
+								</tr>
+							{% endfor %}
+						</td>
+					</tr>
 				</tbody>
 			</table>
-			<div class="col-md-6"></div>
-		</div>
+		>
 
 	{% endblock %}

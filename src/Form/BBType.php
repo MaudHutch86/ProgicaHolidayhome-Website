@@ -2,14 +2,17 @@
 
 namespace App\Form;
 
+use App\Entity\Amenities;
 use App\Entity\HolidayHome;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+
 class BBType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -48,7 +51,12 @@ class BBType extends AbstractType
             ->add('postCode',NumberType::class,[
                 'required' => false
             ])
-        ;
+           ->add('Amenities',EntityType::class,[
+                'class' => Amenities :: class,
+                'choice_label'=> 'name',
+                'multiple'=>true
+            ]);
+        
     }
 
     public function configureOptions(OptionsResolver $resolver)
