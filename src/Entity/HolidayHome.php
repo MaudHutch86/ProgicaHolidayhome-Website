@@ -3,14 +3,20 @@
 namespace App\Entity;
 
 
+use DateTime;
 use App\Entity\Amenities;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\HolidayHomeRepository;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 /**
  * @ORM\Entity(repositoryClass=HolidayHomeRepository::class)
+ * @Vich\Uploadable
  */
 class HolidayHome
 {
@@ -28,8 +34,8 @@ class HolidayHome
      * min=5,
      * max=30,
      * minMessage = "Your first name must be at least {{ limit }} characters long",
-     * maxMessage = "Your first name cannot be longer than {{ limit }} characters"
-     * )
+     * maxMessage = "Your first name cannot be longer than {{ limit }} characters")
+     * 
      */
     private $name;
 
@@ -96,12 +102,32 @@ class HolidayHome
      * @ORM\ManyToMany(targetEntity=Amenities::class, inversedBy="yes")
      */
     private $amenities;
+/**
+*@var File|null
+  * @Vich\UploadableField(mapping="HolidayHome_image", fileNameProperty="imageName")
+
+ */
+    private $imageFile;
+/**
+ * *@var string|null
+ * @ORM\Column(type="string")
+ */
+    private $imageName;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updated_at;
+
+    
 
     public function __construct()
     {
+
 $this->animals = false;
 $this->created_at = new \DateTime();
 $this->amenities = new ArrayCollection();
+
     }
 
     public function getId(): ?int
@@ -273,6 +299,61 @@ $this->amenities = new ArrayCollection();
     public function removeAmenity(Amenities $amenity): self
     {
         $this->amenities->removeElement($amenity);
+
+        return $this;
+    }
+
+    /**
+     * Get *@var File|null
+     */ 
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * Set *@var File|null
+
+     * @return  self
+     */ 
+    public function setImageFile($imageFile)
+    {
+        $this->imageFile = $imageFile;
+        if ($this->imageFile instanceof UploadedFile){
+            $this->updated_at = new \DateTime('now');
+        }
+
+        return $this;
+    }
+
+    /**
+     *@var string|null
+     */ 
+    public function getImageName()
+    {
+        return $this->imageName;
+    }
+
+    /**
+     * 
+     *@var string|null
+     * @return  self
+     */ 
+    public function setImageName($imageName)
+    {
+        $this->imageName = $imageName;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTime
+    {
+        return $this->updated_at;
+    }
+
+    public function setUpdatedAt(\DateTime $updated_at): self
+    {
+        $this->updated_at = $updated_at;
 
         return $this;
     }

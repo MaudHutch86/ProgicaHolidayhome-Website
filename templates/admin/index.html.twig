@@ -11,7 +11,7 @@
 	{% endfor %}
     <a href="{{path('admin.new')}}"class="btn btn-warning">create</a>
 	<div class="row">
-		<table class="table-striped">
+		<table class="table">
 			<thead>
 				<th>#id</th>
 				<th>Name</th>
@@ -42,7 +42,9 @@
 						<th>
                         <a href=""class="btn btn-primary">Edit</a>
                         </th>
-
+<th>
+                        <a href=""class="btn btn-secondary">Delete</a>
+                        </th>
 					</tr>
 				{% endfor %}
 			</tbody>

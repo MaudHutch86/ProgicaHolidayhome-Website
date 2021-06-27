@@ -1,7 +1,9 @@
 {
     "cSpell.words": [
+        "allowed",
         "anemities",
         "anemity",
+        "bundle",
         "by",
         "csrf",
         "db",
@@ -12,12 +14,17 @@
         "inversed",
         "lokalise",
         "longtext",
+        "mimetypes",
         "password",
+        "projet",
         "security",
         "sensio",
         "symfony",
         "tinyint",
+        "upgrader",
+        "uploader",
         "user",
-        "varchar"
+        "varchar",
+        "vich"
     ]
 }
