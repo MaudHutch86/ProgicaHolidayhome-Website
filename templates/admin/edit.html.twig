@@ -1,0 +1,12 @@
+{% extends 'base.html.twig'%}
+
+
+{% block body %}
+<div class="row">
+		<h1>Votre gite</h1>
+	</div>
+{{form_start(formBB)}}
+{{include ('admin/form.html.twig')}}
+
+{{form_end(formBB)}}
+{% endblock %}

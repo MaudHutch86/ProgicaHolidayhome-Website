@@ -5,63 +5,79 @@
 {% endblock %}
 
 {% block body %}
-	<div class="row">
-		<h1>Bed and Breakfast</h1>
-	</div>
-	<div class class "row">
-		<div class="col-md-6">
-			<table class="table table-striped">
-				<thead>
-					<th>#id</th>
-					<th>Name</th>
-					<th>Description</th>
-					<th>Address</th>
-					<th>FloorSpace</th>
-					<th>roomNumber</th>
-					<th>Bedding</th>
-					<th>Animals</th>
-					<th>highSeasonPrice</th>
-					<th>lowSeasonPrice</th>
-					<th>City</th>
-					<th>postCode</th>
-				</thead>
-				<tbody>
-					<td>{{BB.id}}</td>
-					<td>{{BB.name}}</td>
-					<td>{{BB.description}}</td>
-					<td>{{BB.address}}</td>
-					<td>{{BB.floorSpace}}</td>
-					<td>{{BB.roomNumber}}</td>
-					<td>{{BB.Bedding}}</td>
-					<th>Animals</th>
-					{% if BB.animals %}
-						<td>Accepted</td>
-					{% else %}
-						<td>Refused</td>
-					{% endif %}
-					<td>{{BB.highSeasonPrice}}</td>
-					<td>{{BB.lowSeasonPrice}}</td>
-					<td>{{BB.city}}</td>
-					<td>{{BB.postCode}}</td>
-					<tr>
-						<th>Amenities</th>
-						<td>
-							{% for eq in BB.amenities %}
-								<tr>
-									<th>Amenities</th>
-									<td>
-										<ul>
-											<li>
-												{{eq.name}}</li>
-										</ul>
-									</td>
+	<div class="jumbotron">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+					<img src="#">
+				</div>
+				<div class="col-md-4">
+					<h1>{{BB.name}}</h1>
+					<a href"#" class="btn btn-secondary">Contact the agent</a>
+					<div id="ContactForm" class="mt-4">
+						{{form_start(form)}}
 
-								</tr>
-							{% endfor %}
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		>
+						{{form_rest(form)}}
+						<button class="btn btn-secondary">Send</button>
+						{{form_end(form)}}
+						<div class class "row">
+							<div class="col-md-8">
+								<table class="table table-striped">
+									<thead>
+										<th>#id</th>
+										<th>Name</th>
+										<th>Description</th>
+										<th>Address</th>
+										<th>FloorSpace</th>
+										<th>roomNumber</th>
+										<th>Bedding</th>
+										<th>Animals</th>
+										<th>highSeasonPrice</th>
+										<th>lowSeasonPrice</th>
+										<th>City</th>
+										<th>postCode</th>
+									</thead>
+									<tbody>
+										<td>{{BB.id}}</td>
+										<td>{{BB.name}}</td>
+										<td>{{BB.description}}</td>
+										<td>{{BB.address}}</td>
+										<td>{{BB.floorSpace}}</td>
+										<td>{{BB.roomNumber}}</td>
+										<td>{{BB.Bedding}}</td>
+										<th>Animals</th>
+										{% if BB.animals %}
+											<td>Accepted</td>
+										{% else %}
+											<td>Refused</td>
+										{% endif %}
+										<td>{{BB.highSeasonPrice}}</td>
+										<td>{{BB.lowSeasonPrice}}</td>
+										<td>{{BB.city}}</td>
+										<td>{{BB.postCode}}</td>
 
-	{% endblock %}
+
+										<tr>
+											<th>Amenities</th>
+											<td>
+												{% for eq in BB.amenities %}
+													<tr>
+														<th>Amenities</th>
+														<td>
+															<ul>
+																<li>
+																	{{eq.name}}</li>
+															</ul>
+														</td>
+
+													</tr>
+												{% endfor %}
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+
+				{% endblock %}

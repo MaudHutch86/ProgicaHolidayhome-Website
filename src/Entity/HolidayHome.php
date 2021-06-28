@@ -4,6 +4,7 @@ namespace App\Entity;
 
 
 use DateTime;
+use App\Form\ContactType;
 use App\Entity\Amenities;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\HolidayHomeRepository;

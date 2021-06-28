@@ -2,9 +2,13 @@
 
 namespace App\Controller\BednBreakfast;
 
+use App\Entity\Contact;
 use App\Entity\BBSearch;
-use App\Entity\HolidayHome;
+
+use App\Form\ContactType;
 use App\Form\BBSearchType;
+use App\Entity\HolidayHome;
+use App\Notification\ContactNotification;
 use App\Repository\HolidayHomeRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -67,12 +71,30 @@ class BbController extends AbstractController
 
     /**
      * @route( "/HolidayHome/{id}", name= "Bb.show")
+    
+     * @return Response
      */
-    public function show(int $id)
-    {
-        $BB = $this->repo->find($id);
+    public function show(int $id , Request $request,ContactNotification $notification)
+{
+     $contact = new Contact()  ;
+
+     $form = $this->createForm(ContactType::class,$contact);
+     $contact->setHolidayHome($id);
+    $form->handleRequest($request);
+    
+     
+     if ($form->isSubmitted() && $form->isValid()) { 
+         $notification ->notify($contact);
+         $this->addFlash('successfully' ,'sent');
+         return $this->redirectToRoute('Bb.show',[
+             'id'=>$id,
+         ]);
+     }
+
+$BB = $this->repo->find($id);
         return $this->render('/Bb/show.html.twig', [
-            'BB' => $BB
+            'BB' => $BB,
+            'form'=>$form->createView()
         ]);
     }
 }
