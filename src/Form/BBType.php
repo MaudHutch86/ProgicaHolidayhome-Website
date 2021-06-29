@@ -60,10 +60,11 @@ class BBType extends AbstractType
                 'allow_delete' => true, // not mandatory, default is true
                 'download_uri' => true, // not mandatory, default is true
             ))
-            ->add('Amenities', EntityType::class, [
-                'class' => Amenities::class,
-                'choice_label' => 'name',
-                'multiple' => true
+            ->add('Amenities',EntityType::class,[
+                'class'=> Amenities:: class,
+         'label'=> 'Amenities',
+                'choice_label'=> 'name',
+                'multiple'=> true
             ]);
     }
 

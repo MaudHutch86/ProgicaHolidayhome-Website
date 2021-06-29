@@ -6,18 +6,25 @@
 
 {% block body %}
 	<div class="jumbotron">
-		<div class="container">
+		<div class="form-control">
 			{{form_start(form)}}
 			<div class="form-row">
 				<div class="col">
 					{{form_row(form.minSurface)}}
 				</div>
 				<div class="col">
-					{{form_row(form.maxPrice)}}
+					{{form_row(form.maxBedding)}}
 				</div>
-				<div class"col">
-					<button class"btn btn-secondary">Search</button>
+				<div class="col">
+					{{form_row(form.animalsAccepted)}}
 				</div>
+				<div class="col">
+					{{form_row(form.perCity)}}
+				</div>
+				<div class="col">
+					{{form_row(form.perAmenities)}}
+				</div>
+				
 			</div>
 			{{form_end(form)}}
 		</div>

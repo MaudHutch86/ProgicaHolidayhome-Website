@@ -25,10 +25,10 @@ class BbController extends AbstractController
         $this->repo = $repo;
     }
     /**
-     * @Route("/Homepage", name="homepage")
+     * @Route("/homepage", name="homepage")
      * 
      */
-    public function Home(PaginatorInterface $paginator, Request $request): Response
+    public function home(PaginatorInterface $paginator, Request $request): Response
     {
 
 
@@ -38,7 +38,7 @@ class BbController extends AbstractController
             9
         );
 
-        return $this->render('Homepage/index.html.twig', [
+        return $this->render('holiday_home/index.html.twig', [
             'current_page' => 'BBs',
             'BBs' => $BBs
 
@@ -53,6 +53,7 @@ class BbController extends AbstractController
         $search = new BBSearch();
         $form = $this->createForm(BBSearchType::class, $search);
         $form->handleRequest($request);
+        $form->createView();
 
 
         $BBs = $paginator->paginate(

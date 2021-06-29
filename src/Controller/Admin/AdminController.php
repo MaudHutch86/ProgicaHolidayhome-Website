@@ -78,5 +78,6 @@ class AdminController extends AbstractController
         return $this->render('/admin/new.html.twig', [
             "formBB" => $form->createView()
         ]);
+        
     }
 }

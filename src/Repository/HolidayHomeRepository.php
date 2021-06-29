@@ -8,6 +8,7 @@ use App\Entity\HolidayHome;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use phpDocumentor\Reflection\PseudoTypes\True_;
 
 /**
  * @method HolidayHome|null find($id, $lockMode = null, $lockVersion = null)
@@ -41,13 +42,62 @@ class HolidayHomeRepository extends ServiceEntityRepository
     public function findLatestBB():array
     {
         
-        return $this->findVisibleQuery()
+        return $this->createQueryBuilder('h')
         
-            ->orderBy('created_at', 'DESC');
+            ->orderBy('h.created_at', 'DESC')
+            ->setMaxResults(9)
+            ->getQuery()
+            ->getResult();
+    }
            
             
-        ;
+        
+    
+
+
+    
+    public function findAllBBSearch(BBSearch $search): array
+
+
+    {
+
+        $query= $this->createQueryBuilder('h');
+        if($search->getMinSurface()){
+            $query=$query
+                       ->andWhere('g.surface> :minSurface')
+                       ->setParameter('minSurface',$search->getMinSurface());
+        }
+        $query= $this->createQueryBuilder('h');
+        if($search->getMaxBedding()){
+            $query=$query
+                       ->andWhere('g.Bedding> :maxBedding')
+                       ->setParameter('maxBedding',$search->getMaxBedding());
+        }
+        $query= $this->createQueryBuilder('h');
+        if($search->getAnimalsAccepted(True)){
+            $query=$query
+                       ->andWhere('g.animals> :animalsAccepted')
+                       ->setParameter('animalsAccepted',$search->getAnimalsAccepted());
+        }
+        $query= $this->createQueryBuilder('h');
+        if($search->getPerCity(true)){
+            $query=$query
+                       ->andWhere('g.city> :perCity')
+                       ->setParameter('perCity',$search->getPerCity());
+        }
+        $query= $this->createQueryBuilder('h');
+        if($search->getPerAmenities(true)){
+            $query=$query
+                       ->andWhere('g.amenities> :perAmenities')
+                       ->setParameter('perAmenities',$search->getPerAmenities());
+        }
+
+        return $query->getQuery()->getResult();
+      
     }
+   
+
+
     
 
     /*
