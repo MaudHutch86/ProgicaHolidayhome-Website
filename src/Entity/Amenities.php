@@ -18,17 +18,17 @@ class Amenities
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private string $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity=HolidayHome::class, mappedBy="anemities")
+     * @ORM\ManyToMany(targetEntity=HolidayHome::class, mappedBy="Amenities")
      */
-    private $yes;
+    private  $yes;
 
     public function __construct()
     {

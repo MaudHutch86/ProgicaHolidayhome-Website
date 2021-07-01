@@ -12,7 +12,7 @@ class Contact{
      */
 
 
-     private $firstName;
+     private string $firstName;
 
 /**
      * @var string|null
@@ -21,7 +21,7 @@ class Contact{
      *
      */
 
-     private $lastName;
+     private  string $lastName;
 
 /**
      * @var string|null
@@ -29,7 +29,7 @@ class Contact{
      * 
      *
      */
-     private $phone;
+     private string $phone;
 
 
 /**
@@ -38,7 +38,7 @@ class Contact{
      * @Assert\Email()
      *
      */
-     private $email;
+     private string $email;
 
 
 /**
@@ -47,13 +47,13 @@ class Contact{
      * @Assert\Length(min=2,max=100)
      *
      */
-     private $message;
+     private string  $message;
 
 
 /**
      * 
      */
-  private $HolidayHome;
+  private string $HolidayHome;
 
 
      /**

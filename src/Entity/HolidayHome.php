@@ -26,7 +26,7 @@ class HolidayHome
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -38,47 +38,47 @@ class HolidayHome
      * maxMessage = "Your first name cannot be longer than {{ limit }} characters")
      * 
      */
-    private $name;
+    private string $name;
 
     /**
      * @ORM\Column(type="text")
      */
-    private $description;
+    private string $description;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $address;
+    private string $address;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $floorSpace;
+    private int $floorSpace;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $roomNumber;
+    private int  $roomNumber;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $Bedding;
+    private int  $Bedding;
 
     /**
      * @ORM\Column(type="boolean", options= {"default":false })
      */
-    private $animals;
+    private bool $animals;
 
     /**
      * @ORM\Column(type="integer", length=255)
      */
-    private $highSeasonPrice;
+    private int $highSeasonPrice;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $lowSeasonPrice;
+    private int $lowSeasonPrice;
 
     /**
      * @ORM\Column(type="datetime")
@@ -88,7 +88,7 @@ class HolidayHome
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $city;
+    private string $city;
 
     /**
      * @ORM\Column(type="integer")@
@@ -97,28 +97,38 @@ class HolidayHome
      * max=5
      * )
      */
-    private $postCode;
+    private int $postCode;
 
     /**
      * @ORM\ManyToMany(targetEntity=Amenities::class, inversedBy="yes")
      */
-    private $amenities;
+    private object $amenities;
 /**
 *@var File|null
   * @Vich\UploadableField(mapping="HolidayHome_image", fileNameProperty="imageName")
 
  */
-    private $imageFile;
+    private file $imageFile;
 /**
  * *@var string|null
  * @ORM\Column(type="string")
  */
-    private $imageName;
+    private  $imageName;
 
     /**
      * @ORM\Column(type="datetime")
      */
     private $updated_at;
+
+    /**
+     * @ORM\Column(type="float", scale = 4,precision=6)|
+     */
+    private  float $lat;
+
+    /**
+     * @ORM\Column(type="float",scale= 4, precision= 7)| 
+     */
+    private float $lng;
 
     
 
@@ -358,4 +368,30 @@ $this->amenities = new ArrayCollection();
 
         return $this;
     }
+
+    public function getLat(): ?float
+    {
+        return $this->lat;
+    }
+
+    public function setLat(float $lat): self
+    {
+        $this->lat = $lat;
+
+        return $this;
+    }
+
+    public function getLng(): ?float
+    {
+        return $this->lng;
+    }
+
+    public function setLng(float $lng): self
+    {
+        $this->lng = $lng;
+
+        return $this;
+    }
+
+    
 }

@@ -22,46 +22,19 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @route("/admin", name ="admin.index")
+     * @route("/admin/", name ="admin.index")
      */
 
     public function index(): Response
     {
         $BBs = $this->HolidayHomeRepository->findAll();
-        return $this->render('/admin/index.html.twig', [
-
-            "BBs" => $BBs
-
-        ]);
+        return $this->render('/admin/index.html.twig', compact ('BBs'));
     }
-/**
- * @route("/admin/{id}",name="admin.BB.edit")
- * @param BB $BB
- * @param Request $request 
- * return\Symfony\Component\HttpFoundation\Response;
- */
-    public function edit( Request $request)
-    {
-       $BB= new holidayHome();
-        $form = $this->createForm(BBType::class,$BB);
-        $form->handleRequest($request);
-        
-
-        if ($form->isSubmitted() && $form->isValid()){
-            $this->em->flush();
-        }
-       return $this ->render ( 'admin/edit.html.twig', [
-           "formBB" => $form ->createView()
-       ]);
-    
-    
-    }
- 
 
  /**
-     * @route("/admin/new", name="admin.new")
+     * @route("/admin/new" ,name="admin.new")
      */
-    public function new(Request $request)
+    public function new(Request $request): Response
 
     {
         $BB = new HolidayHome();
@@ -80,4 +53,46 @@ class AdminController extends AbstractController
         ]);
         
     }
+/**
+ * @route("/admin/{id}/",name="admin.BB.edit",methods="GET|POST")
+ * 
+ * 
+ */
+    public function edit( HolidayHome $HolidayHome ,Request $request ): Response
+    {
+      
+     
+        $form = $this->createForm(BBType::class,$HolidayHome);
+
+        $form->handleRequest($request);
+        
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $this ->getDoctrine()->getManager();
+            $this->em->flush();
+            $this->addFlash("success"," you BB is modified");
+
+            return $this->redirectToRoute('admin.index');
+
+        }
+
+        $BB = $this->HolidayHomeRepository->find($HolidayHome);
+       return $this ->render ( 'admin/edit.html.twig', [
+          "BB" => $BB,
+           "formBB" => $form ->createView(),
+       ]);
+    
+    
+    }
+
+    /**
+     * @route("/admin/{id}", name="admin.BB.delete",methods="DELETE")
+     */
+ public function delete(HolidayHome $HolidayHome): Response
+ {
+     $this->em->remove($HolidayHome);
+     $this->em->flush();
+     return $this->redirectToRoute('admin/edit.html.twig');
+ }
+
 }

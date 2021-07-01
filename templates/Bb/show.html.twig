@@ -7,13 +7,11 @@
 {% block body %}
 	<div class="jumbotron">
 		<div class="container">
-			<div class="row">
-				<div class="col-md-8">
-					<img src="#">
-				</div>
-				<div class="col-md-4">
+
+				<div class="col-md-6">
+				<img src="#">
 					<h1>{{BB.name}}</h1>
-					<a href"#" class="btn btn-secondary">Contact the agent</a>
+					<button class="btn btn-secondary">Contact the agent</button>
 					<div id="ContactForm" class="mt-4">
 						{{form_start(form)}}
 
@@ -21,63 +19,63 @@
 						<button class="btn btn-secondary">Send</button>
 						{{form_end(form)}}
 						<div class class "row">
-							<div class="col-md-8">
+
+							<div class="col-md-6">
 								<table class="table table-striped">
-									<thead>
-										<th>#id</th>
-										<th>Name</th>
-										<th>Description</th>
-										<th>Address</th>
-										<th>FloorSpace</th>
-										<th>roomNumber</th>
-										<th>Bedding</th>
-										<th>Animals</th>
-										<th>highSeasonPrice</th>
-										<th>lowSeasonPrice</th>
-										<th>City</th>
-										<th>postCode</th>
-									</thead>
-									<tbody>
+
+									<th>#id</th>
+									<th>Name</th>
+									<th>Description</th>
+									<th>Address</th>
+									<th>City</th>
+									<th>postCode</th>
+									<tr>
 										<td>{{BB.id}}</td>
 										<td>{{BB.name}}</td>
 										<td>{{BB.description}}</td>
 										<td>{{BB.address}}</td>
+										<td>{{BB.city}}</td>
+										<td>{{BB.postCode}}</td>
+
+									</tr>
+									<th>Address</th>
+									<th>FloorSpace</th>
+									<th>Bedding</th>
+									<th>roomNumber</th>
+									<th>highSeasonPrice</th>
+									<th>lowSeasonPrice</th>
+
+									<tr>
 										<td>{{BB.floorSpace}}</td>
-										<td>{{BB.roomNumber}}</td>
 										<td>{{BB.Bedding}}</td>
+										<td>{{BB.roomNumber}}</td>
+										<td>{{BB.highSeasonPrice}}</td>
+										<td>{{BB.lowSeasonPrice}}</td>
+									</tr>
+									<tr>
 										<th>Animals</th>
+										<th>Amenities</th>
+									</tr>
+									<tr>
 										{% if BB.animals %}
 											<td>Accepted</td>
 										{% else %}
 											<td>Refused</td>
 										{% endif %}
-										<td>{{BB.highSeasonPrice}}</td>
-										<td>{{BB.lowSeasonPrice}}</td>
-										<td>{{BB.city}}</td>
-										<td>{{BB.postCode}}</td>
+										{% for eq in BB.amenities %}
 
 
-										<tr>
-											<th>Amenities</th>
 											<td>
-												{% for eq in BB.amenities %}
-													<tr>
-														<th>Amenities</th>
-														<td>
-															<ul>
-																<li>
-																	{{eq.name}}</li>
-															</ul>
-														</td>
 
-													</tr>
-												{% endfor %}
+												{{eq.name}}
+
 											</td>
-										</tr>
-									</tbody>
+										{% endfor %}
+									</tr>
+								
 								</table>
-							</div>
-						</div>
+							
+							
 					</div>
 
 				{% endblock %}

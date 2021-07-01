@@ -64,31 +64,31 @@ class HolidayHomeRepository extends ServiceEntityRepository
         $query= $this->createQueryBuilder('h');
         if($search->getMinSurface()){
             $query=$query
-                       ->andWhere('g.surface> :minSurface')
+                       ->andWhere('h.surface> :minSurface')
                        ->setParameter('minSurface',$search->getMinSurface());
         }
         $query= $this->createQueryBuilder('h');
         if($search->getMaxBedding()){
             $query=$query
-                       ->andWhere('g.Bedding> :maxBedding')
+                       ->andWhere('h.Bedding> :maxBedding')
                        ->setParameter('maxBedding',$search->getMaxBedding());
         }
         $query= $this->createQueryBuilder('h');
         if($search->getAnimalsAccepted(True)){
             $query=$query
-                       ->andWhere('g.animals> :animalsAccepted')
+                       ->andWhere('h.animals> :animalsAccepted')
                        ->setParameter('animalsAccepted',$search->getAnimalsAccepted());
         }
         $query= $this->createQueryBuilder('h');
         if($search->getPerCity(true)){
             $query=$query
-                       ->andWhere('g.city> :perCity')
+                       ->andWhere('h.city> :perCity')
                        ->setParameter('perCity',$search->getPerCity());
         }
         $query= $this->createQueryBuilder('h');
         if($search->getPerAmenities(true)){
             $query=$query
-                       ->andWhere('g.amenities> :perAmenities')
+                       ->andWhere('h.amenities> :perAmenities')
                        ->setParameter('perAmenities',$search->getPerAmenities());
         }
 

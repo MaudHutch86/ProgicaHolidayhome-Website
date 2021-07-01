@@ -12,6 +12,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class BBType extends AbstractType
@@ -35,6 +36,7 @@ class BBType extends AbstractType
             ])
             ->add('roomNumber', NumberType::class, [
                 'required' => false
+                
             ])
             ->add('Bedding', NumberType::class, [
                 'required' => false
@@ -54,6 +56,8 @@ class BBType extends AbstractType
             ->add('postCode', NumberType::class, [
                 'required' => false
             ])
+            ->add('lat' , HiddenType::class)
+            ->add('lng' , HiddenType::class)
             ->add('imageFile', VichFileType::class, array(
                 'required' => false,
                 'label'        => 'ajouter une image',

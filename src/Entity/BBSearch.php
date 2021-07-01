@@ -10,30 +10,30 @@ class BBSearch
     /**
     *  int|null
     */
-   private $minSurface;
+   private int $minSurface;
 
 
     /**
      *  int|null
      */
-    private $maxBedding;
+    private int $maxBedding;
 
 
 
      /**
      *  boolean|null
      */
-    private $animalsAccepted;
+    private bool $animalsAccepted;
 
  /**
      *  boolean|null
      */
-    private $perCity;
+    private bool $perCity;
 
  /**
      *  boolean|null
      */
-    private $perAmenities;
+    private bool $perAmenities;
 
 
    
